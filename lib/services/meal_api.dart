@@ -17,27 +17,35 @@ class MealApi {
   }
 
   static Future<List<Meal>> getMealsByCategory(String category) async {
-    final response = await http.get(Uri.parse("$base/filter.php?c={category}"));
+    final response =
+    await http.get(Uri.parse("$base/filter.php?c=$category"));
 
     final data = json.decode(response.body);
+
     return (data["meals"] as List)
         .map((json) => Meal.fromJson(json))
         .toList();
   }
 
   static Future<List<Meal>> searchMeals(String query) async {
-    final response = await http.get(Uri.parse("$base/search.php?s={query}"));
+    final response =
+    await http.get(Uri.parse("$base/search.php?s=$query"));
 
     final data = json.decode(response.body);
+
+    if (data["meals"] == null) return [];
+
     return (data["meals"] as List)
         .map((json) => Meal.fromJson(json))
         .toList();
   }
 
   static Future<RecipeDetail> getRecipeDetail(String id) async {
-    final response = await http.get(Uri.parse("$base/lookup.php?i={id}"));
+    final response =
+    await http.get(Uri.parse("$base/lookup.php?i=$id"));
 
     final data = json.decode(response.body);
+
     return RecipeDetail.fromJson(data["meals"][0]);
   }
 
@@ -45,6 +53,7 @@ class MealApi {
     final response = await http.get(Uri.parse("$base/random.php"));
 
     final data = json.decode(response.body);
+
     return RecipeDetail.fromJson(data["meals"][0]);
   }
 }

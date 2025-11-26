@@ -1,4 +1,4 @@
-class Meal{
+class Meal {
   final String id;
   final String name;
   final String picture;
@@ -6,13 +6,14 @@ class Meal{
   Meal({
     required this.id,
     required this.name,
-    required this.picture
-});
+    required this.picture,
+  });
 
-  factory Meal.fromJson(Map<String, dynamic> json){
+  factory Meal.fromJson(Map<String, dynamic> json) {
     return Meal(
-        id: json["idMeal"],
-        name: json["strMealName"],
-        picture: json["strMealPicture"]);
+      id: json["idMeal"],
+      name: json["strMeal"],
+      picture: json["strMealThumb"],
+    );
   }
 }

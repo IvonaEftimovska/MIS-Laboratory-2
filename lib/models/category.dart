@@ -1,4 +1,4 @@
-class Category{
+class Category {
   final String id;
   final String name;
   final String picture;
@@ -8,15 +8,15 @@ class Category{
     required this.id,
     required this.name,
     required this.picture,
-    required this.description
-});
+    required this.description,
+  });
 
-  factory Category.fromJson(Map<String, dynamic> json){
+  factory Category.fromJson(Map<String, dynamic> json) {
     return Category(
-    id: json["idCategory"],
-    name: json["strNameCategory"],
-    picture: json["strPictureCategory"],
-    description: json["strDescriptionCategory"]
+      id: json["idCategory"],
+      name: json["strCategory"],
+      picture: json["strCategoryThumb"],
+      description: json["strCategoryDescription"],
     );
   }
 }

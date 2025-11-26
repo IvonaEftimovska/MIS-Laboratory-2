@@ -1,6 +1,4 @@
-import 'package:second_lab_mis/models/meal.dart';
-
-class RecipeDetail{
+class RecipeDetail {
   final String id;
   final String name;
   final String instructions;
@@ -15,30 +13,27 @@ class RecipeDetail{
     required this.picture,
     required this.youtubeLink,
     required this.ingredients,
-});
+  });
 
-  factory RecipeDetail.fromJson(Map<String, dynamic> json){
-
+  factory RecipeDetail.fromJson(Map<String, dynamic> json) {
     Map<String, String> ingredients = {};
 
-    for(int i=1; i<=20; i++){
+    for (int i = 1; i <= 20; i++) {
       String? ingredient = json["strIngredient$i"];
       String? measure = json["strMeasure$i"];
 
-      if(ingredient == null || ingredient.isEmpty){
-        continue;
-      }
+      if (ingredient == null || ingredient.isEmpty) continue;
+
       ingredients[ingredient] = measure ?? "";
     }
 
     return RecipeDetail(
-        id: json["idRecipeDetail"],
-        name: json["strRecipeDetail"],
-        instructions: json["strInstructionsRecipeDetail"],
-        picture: json["strPictureRecipeDetail"],
-        youtubeLink: json["strLinkRecipeDetail"],
-        ingredients: ingredients
+      id: json["idMeal"],
+      name: json["strMeal"],
+      instructions: json["strInstructions"],
+      picture: json["strMealThumb"],
+      youtubeLink: json["strYoutube"],
+      ingredients: ingredients,
     );
   }
-
 }
