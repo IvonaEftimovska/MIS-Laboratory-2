@@ -3,7 +3,7 @@ import '../services/meal_api.dart';
 import '../models/category.dart';
 import '../widgets/category_card.dart';
 import 'meals_by_category.dart';
-import 'meal_details.dart';
+import 'favorites_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -37,18 +37,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         title: Text("Meal Categories"),
         actions: [
           IconButton(
-            icon: Icon(Icons.shuffle),
-            onPressed: () async {
-              final meal = await MealApi.getRandomMeal();
+            icon: Icon(Icons.favorite),
+            onPressed: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => MealDetailScreen(mealId: meal.id),
-                ),
+                  context,
+                  MaterialPageRoute(builder: (context) => FavoritesScreen())
               );
             },
           ),
-        ],
+        ]
+        ,
       ),
       body: Column(
         children: [
